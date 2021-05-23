@@ -195,4 +195,34 @@ public class StringCalculatorTest {
     int expected = 3;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void addNumberWhenInputStringHasANumberMoreThan1000() {
+    String input = "//.\n4.1001.1000";
+    int actual = 0;
+    try {
+      actual = this.calculator.add(input);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    int expected = 1004;
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void addNumberWhenInputStringHasMultipleCustomDelimiters() {
+    String input = "//[**][%%]\n20**30%%40";
+    int actual = 0;
+    try {
+      actual = this.calculator.add(input);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    int expected = 90;
+    Assert.assertEquals(expected, actual);
+  }
+
+  // Not added test case for input string having '[' as delimiter if you want that also reply to me
+  // I will
+  // add this also
 }

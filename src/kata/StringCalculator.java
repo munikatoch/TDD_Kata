@@ -2,6 +2,7 @@ package kata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import Exception.NegativeNotAllowedException;
@@ -56,7 +57,9 @@ public class StringCalculator {
   private int addPositiveNumbers(List<Integer> numbers) {
     int sum = 0;
     for (int number : numbers) {
-      sum += number;
+      if (number <= 1000) {
+        sum += number;
+      }
     }
     return sum;
   }
@@ -70,8 +73,24 @@ public class StringCalculator {
 
   private String[] customDelimiter(String numbers) {
     int newLineCharIndex = numbers.indexOf("\n");
-    String delimiter = numbers.substring(2, newLineCharIndex);
+    String delimiter = getDelimiters(numbers.substring(2, newLineCharIndex));
     String newNumbers = numbers.substring(newLineCharIndex + 1);
-    return newNumbers.split(Pattern.quote(delimiter));
+    return newNumbers.split(delimiter);
+  }
+
+  private String getDelimiters(String delimitersString) {
+    if (delimitersString.contains("[")) {
+      StringBuilder sb = new StringBuilder();
+      String patternString = "\\[(.+?)\\]";
+      Pattern pattern = Pattern.compile(patternString);
+      Matcher matcher = pattern.matcher(delimitersString);
+      while (matcher.find()) {
+        String delimiter = matcher.group(1);
+        sb.append(Pattern.quote(delimiter) + "|");
+      }
+      sb.deleteCharAt(sb.length() - 1);
+      return sb.toString();
+    }
+    return Pattern.quote(delimitersString);
   }
 }
