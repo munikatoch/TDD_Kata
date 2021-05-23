@@ -156,4 +156,43 @@ public class StringCalculatorTest {
       Assert.assertEquals(expected, actual);
     }
   }
+
+  @Test
+  public void getCountOfMethodInvokedWhenItIsNotInvoked() {
+    int actual = this.calculator.getCalledCount();
+    int expected = 0;
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void getCountOfMethodInvokedWhenInvokedOnce() {
+    String input = "";
+    int actual = 0;
+    try {
+      this.calculator.add(input);
+      actual = this.calculator.getCalledCount();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    int expected = 1;
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void getCountOfMethodInvokedWhenInvokedMoreThanOnce() {
+    String input = "";
+    int actual = 0;
+    try {
+      this.calculator.add(input);
+      input = "//.\n4.23.4";
+      this.calculator.add(input);
+      input = "32, 10\n 5";
+      this.calculator.add(input);
+      actual = this.calculator.getCalledCount();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    int expected = 3;
+    Assert.assertEquals(expected, actual);
+  }
 }

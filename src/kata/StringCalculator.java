@@ -8,13 +8,20 @@ import Exception.NegativeNotAllowedException;
 
 public class StringCalculator {
 
+  private int addMethodCalled = 0;
+
   public int add(String numbers) throws NegativeNotAllowedException {
+    addMethodCalled++;
     if (numbers == null || numbers.length() == 0) {
       return 0;
     }
     String[] number = splitNumbers(numbers);
     List<Integer> positiveNumbers = filterNegative(number);
     return addPositiveNumbers(positiveNumbers);
+  }
+
+  public int getCalledCount() {
+    return this.addMethodCalled;
   }
 
   private List<Integer> filterNegative(String[] numbers) throws NegativeNotAllowedException {
