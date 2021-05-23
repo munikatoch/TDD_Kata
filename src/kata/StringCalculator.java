@@ -32,6 +32,12 @@ public class StringCalculator {
   }
 
   private String[] splitNumbers(String numbers) {
+    if (numbers.startsWith("//")) {
+      int newLineCharIndex = numbers.indexOf("\n");
+      String delimiter = numbers.substring(2, newLineCharIndex);
+      String newNumbers = numbers.substring(newLineCharIndex + 1);
+      return newNumbers.split(delimiter);
+    }
     return numbers.split(",|\n");
   }
 }
