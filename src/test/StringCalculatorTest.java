@@ -22,4 +22,20 @@ public class StringCalculatorTest {
     int expected = 0;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void addNumberWhenInputStringHasOnlyOneSingleDigitNumber() {
+    String input = "9";
+    int actual = this.calculator.add(input);
+    int expected = 9;
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void addNumberWhenInputStringHasOnlyOneDoubleDigitNumber() {
+    String input = "32";
+    int actual = this.calculator.add(input);
+    int expected = 32;
+    Assert.assertEquals(expected, actual);
+  }
 }
