@@ -38,4 +38,28 @@ public class StringCalculatorTest {
     int expected = 32;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void addNumberWhenInputStringHasTwoNumbers() {
+    String input = "32, 10";
+    int actual = this.calculator.add(input);
+    int expected = 42;
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void addNumberWhenInputStringHasMoreThanTwoNumbers() {
+    String input = "32, 10, 5";
+    int actual = this.calculator.add(input);
+    int expected = 47;
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void addNumberWhenInputStringHasTwoNumbersWithNewLineCharacter() {
+    String input = "32, 10\n 5";
+    int actual = this.calculator.add(input);
+    int expected = 47;
+    Assert.assertEquals(expected, actual);
+  }
 }

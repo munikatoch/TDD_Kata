@@ -23,7 +23,10 @@ public class StringCalculator {
     int intNumber = 0;
     int i;
     for (i = 0; i < number.length(); i++) {
-      intNumber = intNumber * 10 + (number.charAt(i) - '0');
+      char currentChar = number.charAt(i);
+      if (currentChar != ' ') {
+        intNumber = intNumber * 10 + (currentChar - '0');
+      }
     }
     return intNumber;
   }
