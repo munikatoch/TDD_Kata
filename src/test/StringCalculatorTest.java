@@ -78,4 +78,12 @@ public class StringCalculatorTest {
     int expected = 31;
     Assert.assertEquals(expected, actual);
   }
+
+  @Test
+  public void addNumberWhenInputStringHasCustomSpecialCharDelimiter() {
+    String input = "//.\n4.23.4";
+    int actual = this.calculator.add(input);
+    int expected = 31;
+    Assert.assertEquals(expected, actual);
+  }
 }
