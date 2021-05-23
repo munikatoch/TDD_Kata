@@ -16,7 +16,7 @@ public class StringCalculatorTest {
   }
 
   @Test
-  public void add_numbers_when_input_string_is_empty() {
+  public void addNumberWhenInputStringIsEmpty() {
     String input = "";
     int actual = this.calculator.add(input);
     int expected = 0;
